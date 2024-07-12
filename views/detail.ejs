@@ -41,41 +41,42 @@
         <li></li>
         <%}) %>
       </div>
-    </div>
-    <div class="similar">
-      <h1>Similar Movies</h1>
-      <%if (locals.recomendation.length >0) { %>
+      <div class="similar">
+        <h1>Similar Movies</h1>
+        <%if (locals.recomendation.length >0) { %>
 
-      <div class="recomended-show">
-        <% locals.recomendation.forEach((movie)=> { %>
-        <div class="movie-rec">
-          <a href="/details/<%=movie.id%>">
-            <img
-              src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
-              alt=""
-            />
-          </a>
-          <div class="rating-similar" <% if (movie.vote_average.toFixed(1)*10>
-            69) { %> style="--rating:<%=movie.vote_average.toFixed(1)*10%>%;
-            background:conic-gradient(green var(--rating, 0), rgb(181,181,181)
-            0%);" <% } else if (70> movie.vote_average.toFixed(1)*10 &&
-            movie.vote_average.toFixed(1)*10 >= 50){ %> style="--rating:<%=
-            movie.vote_average.toFixed(1)*10%>%;
-            background:conic-gradient(yellow var(--rating, 0), rgb(181,181,181)
-            0%);" <% } else { %> style="--rating: <%=
-            movie.vote_average.toFixed(1)*10%>%; background: conic-gradient(red
-            var(--rating, 0), rgb(181, 181, 181) 0%) " <% } %> >
-            <div
-              class="mask-similar"
-              aria-valuenow="<%= movie.vote_average.toFixed(1)*10  %>%"
-            ></div>
+        <div class="recomended-show">
+          <% locals.recomendation.forEach((movie)=> { %>
+          <div class="movie-rec">
+            <a href="/details/<%=movie.id%>">
+              <img
+                src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
+                alt=""
+              />
+            </a>
+            <div class="rating-similar" <% if (movie.vote_average.toFixed(1)*10>
+              69) { %> style="--rating:<%=movie.vote_average.toFixed(1)*10%>%;
+              background:conic-gradient(green var(--rating, 0), rgb(181,181,181)
+              0%);" <% } else if (70> movie.vote_average.toFixed(1)*10 &&
+              movie.vote_average.toFixed(1)*10 >= 50){ %> style="--rating:<%=
+              movie.vote_average.toFixed(1)*10%>%;
+              background:conic-gradient(yellow var(--rating, 0),
+              rgb(181,181,181) 0%);" <% } else { %> style="--rating: <%=
+              movie.vote_average.toFixed(1)*10%>%; background:
+              conic-gradient(red var(--rating, 0), rgb(181, 181, 181) 0%) " <% }
+              %> >
+              <div
+                class="mask-similar"
+                aria-valuenow="<%= movie.vote_average.toFixed(1)*10  %>%"
+              ></div>
+            </div>
           </div>
+
+          <% }) %>
         </div>
 
-        <% }) %>
+        <% }%>
       </div>
-
-      <% }%>
     </div>
   </div>
 </div>
