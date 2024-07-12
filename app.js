@@ -103,17 +103,15 @@ app.post("/load-page", async (req, res) => {
 app.post("/previous-page", async (req, res) => {
   try {
     global.main.page -= 1;
+    console.log(global.main.page);
     if (global.main.page === 1) {
       const popularMovies = await apiClient.get("movie/popular");
       const popularShow = await apiClient.get("tv/popular");
       const movies = popularMovies.data.results;
       const shows = popularShow.data.results;
-
-      res.render("index.ejs", {
-        movieData: movies,
-        showData: shows,
-        page: global.main.page,
-      });
+      if (global.main.page === 1) {
+        res.redirect("/");
+      }
     } else {
       const response = await apiClient.get(
         `movie/popular?page=${global.main.page}`
@@ -124,23 +122,6 @@ app.post("/previous-page", async (req, res) => {
         page: global.main.page,
       });
     }
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-app.post("/previous-page", async (req, res) => {
-  try {
-    global.main.page -= 1;
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?page=${global.main.page}`,
-      options
-    );
-
-    res.render("previous-page.ejs", {
-      movieData: response.data.results,
-      page: global.main.page,
-    });
   } catch (error) {
     console.error(error);
   }
