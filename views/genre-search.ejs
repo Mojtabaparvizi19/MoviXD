@@ -1,0 +1,29 @@
+<%- include("header.ejs") %>
+<ul class="genre">
+  <% locals.genreData.forEach((genre)=> {%>
+  <a href="/genre/<%=genre.id %>">
+    <li value="<%= genre.id%>" class="genre-item"><%= genre.name%></li>
+  </a>
+  <% })%>
+</ul>
+<div class="search-container">
+  <div class="searched-result">
+    <% if(locals.movieData) { %> <% console.log("logging ..."); %> <%
+    locals.movieData.forEach(item => { %>
+    <card class="card">
+      <a href="/details/<%=item.id %>">
+        <img
+          src="https://image.tmdb.org/t/p/w500<%=item.poster_path%>"
+          alt=""
+        />
+      </a>
+      <div class="description">
+        <h2><%= item.title || item.name%></h2>
+        <h4>Released Date: <%=item.release_date || item.first_air_date%></h4>
+      </div>
+    </card>
+    <% }); %> <% }%>
+  </div>
+</div>
+
+<%- include("footer.ejs") %>

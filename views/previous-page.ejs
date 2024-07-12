@@ -1,0 +1,40 @@
+<%-include("header.ejs") %>
+
+<div class="container">
+  <header id="header"></header>
+  <div class="container-all">
+    <h1 style="text-align: center; padding: 30px; color: rgb(0, 0, 0)">
+      Popular Movies
+    </h1>
+    <div class="show-popular">
+      <% locals.movieData.forEach(movie => { %>
+      <card class="card">
+        <a href="/details/<%=movie.id %>">
+          <img
+            src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
+            alt=""
+          />
+        </a>
+        <div class="description">
+          <h2><%=movie.title%></h2>
+          <h4>Released Date: <%=movie.release_date%></h4>
+        </div>
+      </card>
+      <%}) %>
+    </div>
+    <div class="pagination">
+      <% if (locals.page !==1) { %>
+      <form class="pagination-form next" action="/previous-page" method="post">
+        <button class="previous-page page-btn">previous</button>
+      </form>
+
+      <%} %>
+      <form class="pagination-form previous" action="/load-page" method="post">
+        <button class="next-page page-btn">Next Page</button>
+      </form>
+    </div>
+    <h4 style="color: white; padding-left: 40px">page <%=locals.page %></h4>
+  </div>
+</div>
+
+<%- include("footer.ejs") %>

@@ -1,0 +1,115 @@
+<%-include("header.ejs") %>
+
+<div class="container">
+  <header id="header"></header>
+  <div class="search-form">
+    <form action="/" method="POST">
+      <div class="checkbox">
+        <div class="show-input">
+          <label for="show-check">Search Show</label>
+
+          <input type="radio" value="show" name="checked" id="show-checkBox" />
+        </div>
+        <div class="movie-input">
+          <label for="movie-check">Search Movie</label>
+          <input
+            type="radio"
+            value="movie"
+            name="checked"
+            id="movie-checkBox"
+          />
+        </div>
+      </div>
+      <div class="text-input">
+        <input
+          type="text"
+          class="search-input"
+          name="search-input"
+          placeholder="Name..."
+        />
+        <button class="submit" type="submit">GO</button>
+
+        <!-- <a href="/" type="submit">go</a> -->
+      </div>
+    </form>
+  </div>
+  <div class="container-all">
+    <div class="scroller">
+      <h1 style="text-align: center; color: rgb(0, 0, 0); padding: 30px">
+        Popular Shows
+      </h1>
+      <div class="popular-shows inner-scroller">
+        <% locals.showData.forEach((show)=> { %>
+        <div class="show-card">
+          <a href="/details-show/<%=show.id%>">
+            <img
+              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2<%=show.poster_path%>"
+              alt=""
+            />
+          </a>
+          <div class="popular-rating" <% if (show.vote_average.toFixed(1)*10>
+            69) { %> style='--show-rating:<%=show.vote_average.toFixed(1)*10%>%;
+            background: conic-gradient(green var(--show-rating, 0%),
+            rgb(181,181,181) 0%)' <%} else if
+            (70>show.vote_average.toFixed(1)*10 &&
+            show.vote_average.toFixed(1)*10 > 49) {%>
+            style='--show-rating:<%=show.vote_average.toFixed(1)*10%>%;
+            background: conic-gradient(orange var(--show-rating, 0%),
+            rgb(181,181,181) 0%)' <% } else if
+            (50>show.vote_average.toFixed(1)*10) {%>
+            style='--show-rating:<%=show.vote_average.toFixed(1)*10%>%;
+            background: conic-gradient(red var(--show-rating, 0%),
+            rgb(181,181,181) 0%)' <% } %> >
+            <div
+              class="mask-popular"
+              aria-valuenow="<%=show.vote_average.toFixed(1)*10%>"
+            ></div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <h1 style="text-align: center; padding: 30px; color: rgb(0, 0, 0)">
+      Popular Movies
+    </h1>
+
+    <ul class="genre">
+      <% locals.genreData.forEach((genre)=> {%>
+      <a href="/genre/<%=genre.id %>">
+        <li value="<%= genre.id%>" class="genre-item"><%= genre.name%></li>
+      </a>
+      <% })%>
+    </ul>
+
+    <div class="show-popular">
+      <% locals.movieData.forEach(movie => { %>
+      <card class="card">
+        <a href="/details/<%=movie.id %>">
+          <img
+            src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
+            alt=""
+          />
+        </a>
+        <div class="description">
+          <h2><%=movie.title%></h2>
+          <h4>Released Date: <%=movie.release_date%></h4>
+        </div>
+      </card>
+      <%}) %>
+    </div>
+    <div class="pagination">
+      <% if (locals.page !==1) { %>
+      <form class="pagination-form next" action="/previous-page" method="post">
+        <button class="previous-page page-btn">previous</button>
+      </form>
+
+      <%} %>
+      <form class="pagination-form previous" action="/load-page" method="post">
+        <button class="next-page page-btn">Next Page</button>
+      </form>
+      <h4 style="color: white; padding-left: 40px">page <%=locals.page %></h4>
+    </div>
+  </div>
+</div>
+
+<%- include("footer.ejs") %>
