@@ -13,20 +13,28 @@
 
 body {
   height: fit-content;
-  background-image: var(--gradient);
+  background-color: rgb(38, 38, 40);
   padding: 0px;
   margin: 0px;
   /* width: 100vw; */
 }
 
 #header {
-  height: 350px;
+  height: 450px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.3);
   z-index: 0;
-  background-image: url("../assets/banner-1155437_1280.png");
+  background-image: url("https://image.tmdb.org/t/p/original/nu1fARVd5xx8PKSdUeQTz0wtjyo.jpg");
   background-size: 100%;
   box-shadow: 0px 0px 15px black;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(29, 27, 27);
+  z-index: 10;
 }
 
 .container {
@@ -47,11 +55,12 @@ body {
   display: flex;
   justify-content: center;
   gap: 40px;
-  background-color: rgba(138, 134, 134, 0.447);
+  background-color: rgba(182, 180, 180, 0.072);
   padding: 20px;
   width: auto;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  color: rgb(167, 56, 4);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .search-form {
@@ -71,14 +80,16 @@ body {
   font-family: "Lato", sans-serif;
   border-radius: 50px;
   border: 0.5px solid rgb(92, 92, 92);
-  background-color: rgba(255, 255, 255, 0.525);
+  background-color: rgba(255, 255, 255, 0.508);
   color: rgb(0, 0, 0);
 }
-
+.title {
+  color: rgb(164, 50, 5);
+}
 .text-input {
-  background-color: rgba(176, 173, 173, 0.31);
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  background-color: rgba(205, 199, 199, 0.128);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,7 +104,7 @@ label {
   background-color: rgba(255, 255, 255, 0.439);
   height: 30px;
   margin: 10px;
-  background-color: #d190db;
+  background-color: #a95218;
   color: white;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -102,7 +113,7 @@ label {
   transition: scale 1s;
 }
 .submit:hover {
-  background-color: #3d43ed;
+  background-color: #8d2705;
   scale: 1.05;
 }
 
@@ -158,7 +169,7 @@ label {
   overflow-x: scroll;
   padding: 5px;
   border-radius: 15px;
-  background-color: rgba(230, 224, 224, 0.343);
+  /* background-color: rgba(230, 224, 224, 0.097); */
 }
 .genre::-webkit-scrollbar {
   width: 0px;
@@ -168,12 +179,13 @@ label {
   cursor: pointer;
   display: grid;
   place-content: center;
-  background-color: rgba(149, 187, 224, 0.494);
+  background-color: rgba(88, 89, 89, 0.294);
   padding: 5px;
   height: 80px;
   width: 80px;
-  box-shadow: 0px 0px 2px black;
-  border-radius: 25px;
+  color: rgb(183, 47, 6);
+  /* box-shadow: 0px 0px 2px black; */
+  border-radius: 10px;
   transition: scale 0.5s, background-color 0.5s, box-shadow 0.5s;
 }
 
@@ -189,7 +201,6 @@ a {
 .home {
   z-index: 4;
   position: fixed;
-
   display: grid;
   place-content: center;
   left: 10px;
@@ -197,7 +208,7 @@ a {
   width: 60px;
   height: 40px;
   top: 10px;
-  background-color: rgb(170, 235, 170);
+  background-color: rgb(159, 43, 4);
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0px 0px 10px black;

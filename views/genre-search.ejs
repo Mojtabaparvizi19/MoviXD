@@ -1,11 +1,11 @@
 <%- include("header.ejs") %>
-<ul class="genre">
+<div class="genre">
   <% locals.genreData.forEach((genre)=> {%>
-  <a href="/genre/<%=genre.id %>">
+  <a style="margin-top: 60px" href="/genre/<%=genre.id %>">
     <li value="<%= genre.id%>" class="genre-item"><%= genre.name%></li>
   </a>
   <% })%>
-</ul>
+</div>
 <div class="search-container">
   <div class="searched-result">
     <% if(locals.movieData) { %> <% console.log("logging ..."); %> <%

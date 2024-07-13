@@ -4,7 +4,7 @@ const global = {
     total_page: 0,
   },
 };
-
+import APP_API from "dotenv/config.js";
 import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
@@ -35,8 +35,7 @@ const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMWZkNGJjZDU1YTAzMGQwNWY1ZDI5MDQyZmEwNDc4ZiIsInN1YiI6IjY1ZGYzODc0N2YyZDRhMDE2MzY3N2JhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pWxzEtvGhXFgYD8O_Ipr2hwqp3Fxw7PgHoNmFGk1qqI",
+    Authorization: process.env.APP_API,
   },
 };
 

@@ -38,7 +38,7 @@
   </div>
   <div class="container-all">
     <div class="scroller">
-      <h1 style="text-align: center; color: rgb(78, 72, 72); padding: 30px">
+      <h1 class="title" style="text-align: center; padding: 30px">
         Popular Shows
       </h1>
       <div class="popular-shows inner-scroller">
@@ -52,7 +52,7 @@
           </a>
           <div class="popular-rating" <% if (show.vote_average.toFixed(1)*10>
             69) { %> style='--show-rating:<%=show.vote_average.toFixed(1)*10%>%;
-            background: conic-gradient(green var(--show-rating, 0%),
+            background: conic-gradient(#6C946F var(--show-rating, 0%),
             rgb(181,181,181) 0%)' <%} else if
             (70>show.vote_average.toFixed(1)*10 &&
             show.vote_average.toFixed(1)*10 > 49) {%>
@@ -72,7 +72,7 @@
         <% }) %>
       </div>
     </div>
-    <h1 style="text-align: center; padding: 30px; color: rgb(0, 0, 0)">
+    <h1 class="title" style="text-align: center; padding: 30px">
       Popular Movies
     </h1>
 
