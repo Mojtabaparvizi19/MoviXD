@@ -36,13 +36,13 @@
         <h1><%= data.name %></h1>
         <p class="overview-text"><%= data.overview%></p>
 
-        <h4>Release Date: <%= data.first_air_date%></h4>
+        <h4 style="color: white">Release Date: <%= data.first_air_date%></h4>
         <% locals.data.genres.forEach((genre) =>{ %>
         <li></li>
         <%}) %>
       </div>
       <div class="similar">
-        <h1>Similar Shows</h1>
+        <h1 class="title">Similar Shows</h1>
         <%if (locals.recomendation.length >0) { %>
 
         <div class="recomended-show">

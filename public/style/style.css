@@ -392,7 +392,7 @@ a {
 .overview {
   display: grid;
   place-content: center;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   padding: 30px;
   min-width: auto;
   max-width: 800px;
@@ -465,9 +465,9 @@ h4 {
   color: rgb(0, 0, 0);
 }
 .recomended-show {
-  width: 95%;
-  height: 280px;
-  background-image: var(--bg-gradient);
+  width: 100%;
+  height: 300px;
+  background-color: black;
   z-index: 10;
   border-radius: 15px;
   padding: 5px;
@@ -476,12 +476,14 @@ h4 {
   overflow-x: scroll;
   overflow-y: hidden;
   gap: 10px;
+  color: white;
 }
 .recomended-show::-webkit-scrollbar {
   width: 0px;
 }
 
 .movie-rec {
+  margin-top: 5px;
   width: 175px;
   height: 95%;
   border-radius: 15px;
