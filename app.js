@@ -9,6 +9,20 @@ import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
 import apiClient from "./public/services/apiClient.js";
+import joi from "joi";
+
+function validateData(reqBody) {
+  const schema = joi.object({
+    checked: joi.string().required().messages({
+      "any.required": "Must pick 'Show' or 'movie'",
+    }),
+    "search-input": joi.string().required().messages({
+      "string.empty": "Search field Cannot be empty",
+    }),
+  });
+  const result = schema.validate(reqBody);
+  return result;
+}
 
 const app = express();
 app.use(express.json());
@@ -48,10 +62,8 @@ app.get("/details/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     const response = await apiClient.get(`movie/${id}`);
-
     const resRecomendation = await apiClient.get(`movie/${id}/similar`);
     const recomendation = resRecomendation.data;
-
     const results = response.data;
 
     res.render("detail.ejs", {
@@ -103,7 +115,7 @@ app.post("/load-page", async (req, res) => {
 app.post("/previous-page", async (req, res) => {
   try {
     global.main.page -= 1;
-    console.log(global.main.page);
+
     if (global.main.page === 1) {
       const popularMovies = await apiClient.get("movie/popular");
       const popularShow = await apiClient.get("tv/popular");
@@ -152,24 +164,42 @@ app.get("/details-show/:id", async (req, res) => {
 app.post("/", async (req, res) => {
   try {
     const request = req.body;
-    const type = request["checked"];
+    const type = request.checked;
     const searched = request["search-input"];
-    let results;
-    let url;
-    if (type === "movie") {
-      url = `search/movie?query=${searched}`;
-      const response = await apiClient.get(url);
-      results = response.data.results;
-      res.render("search.ejs", {
-        data: results,
+    const { error } = validateData(request);
+    if (error) {
+      global.main.page = 1;
+      const popularMovies = await apiClient.get("movie/popular");
+      const popularShow = await apiClient.get("tv/popular");
+      const genreResponse = await apiClient.get("genre/movie/list");
+      const movies = popularMovies.data.results;
+      const shows = popularShow.data.results;
+      const genres = genreResponse.data.genres;
+      res.render("index.ejs", {
+        movieData: movies,
+        showData: shows,
+        genreData: genres,
+        error,
+        page: global.main.page,
       });
-    } else if (type === "show") {
-      url = `search/tv?query=${searched}`;
-      const response = await apiClient.get(url, options);
-      results = response.data.results;
-      res.render("search-show.ejs", {
-        data: results,
-      });
+    } else {
+      let results;
+      let url;
+      if (type === "movie") {
+        url = `search/movie?query=${searched}`;
+        const response = await apiClient.get(url);
+        results = response.data.results;
+        res.render("search.ejs", {
+          data: results,
+        });
+      } else if (type === "show") {
+        url = `search/tv?query=${searched}`;
+        const response = await apiClient.get(url, options);
+        results = response.data.results;
+        res.render("search-show.ejs", {
+          data: results,
+        });
+      }
     }
   } catch (error) {
     console.error(error);

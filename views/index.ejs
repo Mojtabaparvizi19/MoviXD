@@ -2,6 +2,9 @@
 
 <div class="container">
   <header id="header"></header>
+  <% if(locals.error) { %>
+  <p class="error"><%=error.message %></p>
+  <%} %>
   <div class="search-form">
     <form action="/" method="POST">
       <div class="checkbox">
@@ -35,7 +38,7 @@
   </div>
   <div class="container-all">
     <div class="scroller">
-      <h1 style="text-align: center; color: rgb(0, 0, 0); padding: 30px">
+      <h1 style="text-align: center; color: rgb(78, 72, 72); padding: 30px">
         Popular Shows
       </h1>
       <div class="popular-shows inner-scroller">
