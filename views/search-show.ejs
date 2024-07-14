@@ -2,8 +2,7 @@
 
 <div class="search-container">
   <div class="searched-result">
-    <% if(locals.data) { %> <% console.log("logging ..."); %> <%
-    locals.data.forEach(item => { %>
+    <% if(locals.data) { %> <% locals.data.forEach(item => { %>
     <card class="card">
       <a href="/details-show/<%=item.id %>">
         <img
