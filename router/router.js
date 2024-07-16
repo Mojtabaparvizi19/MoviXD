@@ -4,6 +4,7 @@ const global = {
     total_page: 0,
   },
 };
+import APP_API from "dotenv/config.js";
 import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
@@ -29,14 +30,6 @@ function validateData(reqBody) {
 router.use(express.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(express.static("public"));
-
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: process.env.APP_API,
-  },
-};
 
 router.get("/", async (req, res) => {
   try {
