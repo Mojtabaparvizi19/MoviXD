@@ -4,7 +4,6 @@ const global = {
     total_page: 0,
   },
 };
-import APP_API from "dotenv/config.js";
 import axios from "axios";
 import express from "express";
 import bodyParser from "body-parser";
