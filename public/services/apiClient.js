@@ -1,4 +1,5 @@
 import axios from "axios";
+import "dotenv/config.js";
 
 export default axios.create({
   baseURL: "https://api.themoviedb.org/3/",
