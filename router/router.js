@@ -144,12 +144,10 @@ router.post("/previous-page", async (req, res) => {
 router.get("/details-show/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-
     const response = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}`,
       options
     );
-
     const recomendationRes = await axios.get(
       `https://api.themoviedb.org/3/tv/${id}/similar`,
       options
