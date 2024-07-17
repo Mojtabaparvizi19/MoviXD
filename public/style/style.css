@@ -30,7 +30,7 @@ body {
   position: fixed;
   left: 10px;
   top: 10px;
-  width: 98%;
+  width: 85%;
   height: 60px;
   z-index: 1;
 }
@@ -283,18 +283,13 @@ a {
 }
 
 .pege-content {
-  margin-top: 60px;
-
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   height: fit-content;
 }
 
 .detail-container {
   margin-top: 50px;
-
   height: 1300px;
   display: grid;
   grid-template-columns: 1fr;
@@ -460,7 +455,7 @@ h4 {
   max-width: 1400px;
   height: 300px;
   border-radius: 15px;
-  padding: 5px;
+
   display: grid;
   grid-auto-flow: column;
   overflow-x: scroll;
@@ -546,19 +541,16 @@ h4 {
   }
 
   .detail-container {
-    grid-template-columns: 400px;
+    grid-template-columns: 350px;
     grid-template-rows: 1fr;
   }
 
   .card-detail {
-    /* width: 300px; */
-
-    grid-template-columns: 1fr;
+    grid-template-columns: 400px;
     grid-template-rows: auto auto auto;
     gap: 10px;
     padding: 0px;
     right: 0px;
-    left: 50px;
     top: 90px;
     bottom: 0px;
   }
@@ -575,11 +567,11 @@ h4 {
 
   .similar {
     grid-area: 3/1/4/2;
-    width: 100%;
+    width: 70%;
     padding: 5px;
   }
-  .similar .recomended-show {
-    /* width: 80%; */
+  .recomended-show {
+    width: 80%;
     grid-auto-flow: column;
     overflow-y: scroll;
     top: 400px;
