@@ -607,6 +607,9 @@ h4 {
     width: 95%;
     text-align: center;
   }
+  .pege-content {
+    display: block;
+  }
 }
 
 .searched-result {
