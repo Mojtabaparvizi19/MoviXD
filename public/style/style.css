@@ -267,9 +267,6 @@ a {
   margin-left: 20px;
 }
 
-.released {
-  color: #677d6a;
-}
 .pagination {
   display: flex;
   gap: 40px;
@@ -284,7 +281,10 @@ a {
 
 .pege-content {
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: fit-content;
 }
 
@@ -382,11 +382,13 @@ a {
 .overview {
   display: grid;
   place-content: center;
-  color: #1a3636;
-  /* padding: 30px; */
+  color: #ffffff;
   max-width: 800px;
-
   grid-area: 1/2/2/3;
+}
+
+.released {
+  color: #fdfdfd;
 }
 
 .genre-card {
@@ -409,7 +411,6 @@ h1 {
 }
 
 .movie-title {
-  /* z-index: 5; */
   font-size: 40px;
   font-family: "Anton", sans-serif;
   font-weight: 400px;
@@ -520,8 +521,6 @@ h4 {
     width: 100%;
   }
   .recomended-show {
-    /* background-color: black; */
-
     overflow-x: scroll;
   }
   .overview > h1 {
