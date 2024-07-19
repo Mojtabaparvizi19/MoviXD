@@ -51,10 +51,17 @@
           <div class="movie-rec">
             <a href="/details-show/<%=movie.id%>">
               <img
-                src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
-                alt=""
+                <% if(!movie.poster_path){ %>
+
+                  src="https://png.pngtree.com/png-clipart/20190925/original/pngtree-no-image-vector-illustration-isolated-png-image_4979075.jpg"
+                  
+               <% } else { %>
+                   src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" 
+               <%}%>
+    
               />
             </a>
+            
             <div class="rating-similar" <% if (movie.vote_average.toFixed(1)*10>
               69) { %> style="--rating:<%=movie.vote_average.toFixed(1)*10%>%;
               background:conic-gradient(green var(--rating, 0), rgb(181,181,181)

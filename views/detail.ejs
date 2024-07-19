@@ -50,7 +50,13 @@
           <div class="movie-rec">
             <a href="/details/<%=movie.id%>">
               <img
-                src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>"
+              <% if(!movie.poster_path){ %>
+                  <% console.log(movie.poster_path + " printing ...")%>
+                  src="https://png.pngtree.com/png-clipart/20190925/original/pngtree-no-image-vector-illustration-isolated-png-image_4979075.jpg"
+                  
+               <% } else { %>
+                   src="https://image.tmdb.org/t/p/w500<%=movie.poster_path%>" 
+               <%}%>
                 alt=""
               />
             </a>
