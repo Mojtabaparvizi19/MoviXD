@@ -2,13 +2,27 @@
 <div class="pege-content">
   <div class="detail-container">
     <% if (locals.data) { %>
-    <img src="https://image.tmdb.org/t/p/w780<%=data.backdrop_path%>" alt="" />
+    <img
+    <% if(!data.backdrop_path){ %>
+      
+      src="https://png.pngtree.com/png-clipart/20190925/original/pngtree-no-image-vector-illustration-isolated-png-image_4979075.jpg"
+      
+   <% } else { %>
+       src="https://image.tmdb.org/t/p/w780<%=data.backdrop_path%>" 
+   <%}%>
+    
+   />
     <div class="card-detail">
       <div class="content">
         <div class="poster-img">
           <img
-            src="https://image.tmdb.org/t/p/w780<%=data.poster_path%>"
-            alt=""
+          <% if(!data.poster_path){ %>
+         
+            src="https://png.pngtree.com/png-clipart/20190925/original/pngtree-no-image-vector-illustration-isolated-png-image_4979075.jpg"
+            
+         <% } else { %>
+             src="https://image.tmdb.org/t/p/w500<%=data.poster_path%>" 
+         <%}%>
           />
         </div>
         <div class="item-description">
