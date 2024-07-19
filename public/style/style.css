@@ -537,7 +537,7 @@ h4 {
 
 @media (max-width: 430px) {
   .poster-img {
-    width: auto;
+    width: 280px;
   }
 
   .detail-container {
